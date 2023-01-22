@@ -1,47 +1,58 @@
-# OPlus image utilities #
+# Vendor_dlkm Repacker #
+
+This repository based on [rain2wood/erofs](https://github.com/rain2wood/erofs.git)
 
 ### Prerequisites ###
 - Linux running kernel 5.4 or up (check with `uname -r`)
+- python2.7
+  - Debian: `sudo apt install python2`
+  - Arch Linux: `yay -S python2-bin`
 
-### Image rebuilding ###
-- Used to rebuild read-only erofs images into EXT4 mountable images.
-Usage:
-` 
-sudo ./erofs.sh <path to original image> <image partition name>
-`
-For example, if I'm trying to make system_ext image ext4, I'll use the following command:
-`
-sudo ./erofs.sh system_ext.img system_ext
-`
+### How to use ###
 
-- IF you're running into issues like "not enough space to setup filesystem", specify filesystem size by adding the size (I recommend 64MB) after $2.
+#### Clone this repo
 
-### Product image rebuilding ###
-- OPlus (previously oppo) has been being a jerk and adding a butt ton of useless so-called "optimizations" (porting killers). This is one of them.
-- In Android 12 (OxygenOS 12 at least), OPlus has added `OPLUS_FEATURE_OVERLAY_MOUNT` to "mount product partition from existing my_* partitions" (to save image space? idk). With this going on, the product image shipped with OTAs is a dummy image that could not be mounted.
-- Non-OPlus devices does NOT have `OPLUS_FEATURE_OVERLAY_MOUNT` implementation (and it is highly unrecommended to use it, as someone has bricked their devices before after implementing it). However, product image should NOT be empty (there is a system symlink pointing to `/product`). Therefore, this script is written to merge the my_* partitions into a single product image to replicate the `/product` behavior on OPlus devices.
+```
+git clone -b main https://github.com/natsumerinchan/vendor_dlkm_repacker.git
 
-Usage:
-`
-sudo ./product-merge.sh
-`
+cd ./vendor_dlkm_repacker
+```
 
-### OPlus custom partition merging ###
-- We will still have to merge my_* partitions after building the product image (as not all files exist in product image). The script will automatically merge the my_* partitions into system.
+#### Copy your offical vendor_dlkm.img into vendor_dlkm_repacker folder
 
-Usage:
-`
-sudo ./oplus-merge.sh
-`
+```
+sudo mkdir /mnt/vendor_dlkm
 
-### Notes ###
-- All images (especially system) must be the dir that the script is ran.
+sudo mount ./vendor_dlkm.img /mnt/vendor_dlkm -o loop
 
-### To-Do ###
-- Remove dependency of system file_contexts to build all images (we currently cat system filecontexts to the working file contexts to make the image resign properly)
-- Run checks on mounting image (It is reported by [Velosh](https://github.com/velosh) that sometimes mounting erofs images without `-o loop -t erofs` does not work. However it works on my PC, that's why I introduced [this commit](https://github.com/JamieHoSzeYui/oplus-utils/commit/d6b9b3621847117ca60691bd3749d9107f10c1b3). Will work on checks for it later.)
+sudo cp -r /mnt/vendor_dlkm ./vendor_dlkm
+
+sudo umount /mnt/vendor_dlkm
+
+sudo rm -rf /mnt/vendor_dlkm
+
+sudo chmod -R 777 ./vendor_dlkm
+```
+
+#### Now you can modify vendor_dlkm
+
+```
+// Repack vendor_dlkm.img
+
+sudo bash ./repack_dlkm vendor_dlkm
+```
+
+#### You can flash vendor_dlkm-ext4.img to your device now.
+
+```
+adb reboot fastboot
+
+fastboot flash vendor_dlkm ./vendor_dlkm-ext4.img
+
+```
 
 ### Credits and Thanks ###
+[rain2wood](https://github.com/rain2wood)
 
 [Amack](https://github.com/amackpro)
 
