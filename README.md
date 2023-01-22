@@ -2,6 +2,7 @@
 
 ### Prerequisites ###
 - Linux running kernel 5.4 or up (check with `uname -r`)
+This repository based on [rain2wood/erofs](https://github.com/rain2wood/erofs.git)
 
 ### How to use ###
 - Usage:
@@ -38,6 +39,7 @@ fastboot flash vendor_dlkm ./vendor_dlkm-ext4.img
 ```
 
 ### Credits and Thanks ###
+[rain2wood/erofs](https://github.com/rain2wood/erofs.git)
 
 [Amack](https://github.com/amackpro)
 
