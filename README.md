@@ -39,7 +39,7 @@ fastboot flash vendor_dlkm ./vendor_dlkm-ext4.img
 ```
 
 ### Credits and Thanks ###
-[rain2wood/erofs](https://github.com/rain2wood/erofs.git)
+[rain2wood](https://github.com/rain2wood)
 
 [Amack](https://github.com/amackpro)
 
