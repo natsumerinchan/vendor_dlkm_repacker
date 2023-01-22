@@ -19,6 +19,8 @@ sudo mount ./vendor_dlkm.img /mnt/vendor_dlkm -o loop
 
 sudo cp -r /mnt/vendor_dlkm ./vendor_dlkm
 
+sudo umount /mnt/vendor_dlkm
+
 sudo chmod -R 777 ./vendor_dlkm
 
 // Now you can modify vendor_dlkm
