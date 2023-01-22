@@ -8,9 +8,9 @@
 - Usage:
 
 ```
-git clone -b vendor_dlkm https://github.com/natsumerinchan/erofs.git
+git clone -b main https://github.com/natsumerinchan/vendor_dlkm_repacker.git
 
-cd ./erofs
+cd ./vendor_dlkm_repacker
 
 // Please copy your offical vendor_dlkm.img into erofs folder
 
