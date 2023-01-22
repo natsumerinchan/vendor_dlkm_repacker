@@ -12,7 +12,7 @@ git clone -b main https://github.com/natsumerinchan/vendor_dlkm_repacker.git
 
 cd ./vendor_dlkm_repacker
 
-// Please copy your offical vendor_dlkm.img into erofs folder
+// Please copy your offical vendor_dlkm.img into vendor_dlkm_repacker folder
 
 sudo mkdir /mnt/vendor_dlkm
 
