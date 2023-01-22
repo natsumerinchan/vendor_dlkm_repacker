@@ -4,7 +4,6 @@
 - Linux running kernel 5.4 or up (check with `uname -r`)
 
 ### How to use ###
-- Used to rebuild vendor_dlkm.img.
 - Usage:
 
 ```
