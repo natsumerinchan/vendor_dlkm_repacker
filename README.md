@@ -34,6 +34,8 @@ sudo bash ./repack_dlkm vendor_dlkm
 
 // Now you can flash vendor_dlkm-ext4.img to your device.
 
+adb reboot fastboot
+
 fastboot flash vendor_dlkm ./vendor_dlkm-ext4.img
 
 ```
