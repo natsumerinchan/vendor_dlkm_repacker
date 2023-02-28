@@ -5,6 +5,8 @@ This repository based on [rain2wood/erofs](https://github.com/rain2wood/erofs.gi
 ### Prerequisites ###
 - Linux running kernel 5.4 or up (check with `uname -r`)
 - python2.7
+  - Debian: `sudo apt install python2`
+  - Arch Linux: `yay -S python2-bin`
 
 ### How to use ###
 - Usage:
