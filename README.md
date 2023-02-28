@@ -1,8 +1,10 @@
 # Vendor_dlkm Repacker #
 
+This repository based on [rain2wood/erofs](https://github.com/rain2wood/erofs.git)
+
 ### Prerequisites ###
 - Linux running kernel 5.4 or up (check with `uname -r`)
-- This repository based on [rain2wood/erofs](https://github.com/rain2wood/erofs.git)
+- python2.7
 
 ### How to use ###
 - Usage:
